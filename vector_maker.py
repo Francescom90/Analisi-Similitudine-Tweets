@@ -1,6 +1,5 @@
 # -*- coding: cp1252 -*-
-#vector generator
-#import numpy as np
+
 import math
 
 #tentativo di creazione per un array di vettori. Ogni vettore rappresenta uno dei tweet della giornata
