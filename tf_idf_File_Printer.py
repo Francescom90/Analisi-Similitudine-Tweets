@@ -15,7 +15,10 @@ def n_containing(word, bloblist):
 
 def idf(word, bloblist):
     #print "idf\n"
-    return math.log(len(bloblist) / (1 + n_containing(word, bloblist)))
+	result= math.log(len(bloblist) / (1 + n_containing(word, bloblist)))
+	if result<=0:
+		return 0
+	return result
 
 def tfidf(word, blob, bloblist):
     #print "tfidf\n"
