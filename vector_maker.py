@@ -42,25 +42,26 @@ def normalize(d, target=1.0):
    return {key:value*factor for key,value in d.iteritems()}
 
 def normalize_vector(d):
-        norma=0
-        for k in d.keys():
-                norma+=d.get(k)*d.get(k)
-        norma=math.sqrt(norma)
-        factor=1/norma
-        return {key:value*factor for key,value in d.iteritems()}
+	norma=0
+	for k in d.keys():
+	    norma+=d.get(k)*d.get(k)
+	norma=math.sqrt(norma)
+	if norma!=0:
+		factor=1/norma
+	else:
+		factor=0
+	return {key:value*factor for key,value in d.iteritems()}
 
 
 
 
 def compare_vector(file1,file2):
-        vector1=normalize_vector(crea_vettore_comulato(file1))
-        vector2=normalize_vector(crea_vettore_comulato(file2))
+	vector1=normalize_vector(crea_vettore_comulato(file1))
+	vector2=normalize_vector(crea_vettore_comulato(file2))
+	
+	result=0
 
-
-        result=0
-
-        all_key=list(set().union(vector1.keys(),vector2.keys()))
-
+	all_key=list(set().union(vector1.keys(),vector2.keys()))
         for k in all_key:
                 result+=vector1.get(k,0)*vector2.get(k,0)
         return result
