@@ -19,22 +19,23 @@ def validate_date(date_text):
 	return True
 def check_op(op):
 	return op=='analisi'or op=='acquisizione'or op=='completo'
-
-
+print ""
+print "AVVIO 'SISTEMA PER L'ACQUISIZIONE E L'ANALISI DEI TWEETS'"
+print "---------------------------------------------------------"
 print "Argomenti trovati: %s" %argument
 
 if(argument==1):
-	print "non sono stati inseriti parametri adeguati"
+	print "Errore: Non sono stati inseriti parametri adeguati"
 	sys.exit()
 
 if(check_op(sys.argv[1])):
 	operation=sys.argv[1]
 else:
-	print "Operazione non valida, operazioni valide: acquisizione e analisi"
+	print "Errore: Operazione non valida, operazioni valide: acquisizione e analisi"
 	sys.exit()
-	
+#se l'operatore inserito corrisponde ad "acquisizione" inizializza la procedura per la richiesta tweets da Twitter
 if(operation=="acquisizione"):
-	print "operazione: Acquisizione"
+	print "Operazione Selezionata: Acquisizione"
 	if(argument==4):
 		words=sys.argv[2]
 		if(validate_date(sys.argv[3])):
@@ -52,10 +53,13 @@ if(operation=="acquisizione"):
 	if (date==''):
 		have_date=False
 
-	print "ricerca inerente a :%s" %(words,)
-	print "la data in esame: %s" %(date,)
+	print "- Ricerca inerente a :%s" %(words,)
+	print "- Data in esame: %s" %(date,)
+	print ""
 	
 	twitter_mining.miner(words,date,type)
+	
+#Se l'opertaore corrisponde ad "analisi" inizializza la procedura per l'analisi tra collezioni di tweets	
 if(operation=="analisi"):
 	if(argument==4):
 		if(os.path.isfile(sys.argv[2])and os.path.isfile(sys.argv[3])):

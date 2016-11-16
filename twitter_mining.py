@@ -56,8 +56,8 @@ def miner(q,d,type):
         return [last_id,counter]
 
     #inserisco i dati in un modulo di accesso
-    auth=OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(access_token, access_secret)
+    auth=OAuthHandler(config.consumer_key, config.consumer_secret)
+    auth.set_access_token(config.access_token, config.access_secret)
     
     #uso il modulo di accesso per iniziare una connessione con la API di Twitter
     api=tweepy.API(auth)
