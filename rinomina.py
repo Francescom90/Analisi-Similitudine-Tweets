@@ -4,7 +4,7 @@ def rinomina(p,q,d):
 	l=q.split()
 	if l:
 		q=l[0]
-	name="%s_%s.txt" %(q,d)
+	name="tweets/%s_%s.txt" %(q,d)
 	try:
 		os.remove(name)
 	except OSError:

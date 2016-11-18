@@ -30,6 +30,7 @@ def tfidf(word, blob, bloblist):
 def tfidf_run(nome_file):
 	nome_out="rated token/"
 	temp_list=""
+	nome_in="tweets/"
 	bloblist=[]
 	#sys.stdout=open("log.txt","w")
 	
@@ -41,8 +42,8 @@ def tfidf_run(nome_file):
 	#print list_tweet
 	for elem in list_tweet:
 		bloblist.append(tb(elem))    
-	#nome_file=num
 	
+	nome_file=nome_file.replace(nome_in,"")
 	print "______________"
 	print "______________"
 	

@@ -8,7 +8,7 @@ def analisi(file1,file2):
 	path="rated token/"
 	export="result.txt"
 	print export
-	sys.stdout=open(export,"w")
+	sys.stdout=open(export,"a")
 	
 	print "Confronto %s-%s:"%(file1,file2)
 	risultato=compare_vector(file1,file2)

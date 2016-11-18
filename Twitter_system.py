@@ -10,6 +10,7 @@ operation=words=date=""
 have_date=True
 argument=len(sys.argv)
 file1=file2=''
+nome_in="tweets/"
 
 def validate_date(date_text):
 	try:
@@ -41,9 +42,10 @@ if(operation=="acquisizione"):
 		if(validate_date(sys.argv[3])):
 			date=sys.argv[3]
 	if(argument==3):
-		if(validate_date(sys.argv[2])):
-			date=sys.argv[2]
-		else:
+		try:
+			if(validate_date(sys.argv[2])):
+				date=sys.argv[2]
+		except ValueError:
 			words=sys.argv[2]
 	
 	if (words==""):
@@ -57,7 +59,7 @@ if(operation=="acquisizione"):
 	print "- Data in esame: %s" %(date,)
 	print ""
 	
-	twitter_mining.miner(words,date,type)
+	twitter_mining.miner(words,date,have_date)
 	
 #Se l'opertaore corrisponde ad "analisi" inizializza la procedura per l'analisi tra collezioni di tweets	
 if(operation=="analisi"):
@@ -77,7 +79,8 @@ if(operation=="analisi"):
 	tfidf.tfidf_run(file1)
 	tfidf.tfidf_run(file2)
 	path="rated token/"
-	
+	file1=file1.replace(nome_in,"")
+	file2=file2.replace(nome_in,"")
 	file1="%s%s" %(path,file1)
 	file2="%s%s" %(path,file2)
 	
